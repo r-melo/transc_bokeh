@@ -313,21 +313,23 @@ def plot(doc):
     cnames = ['Black', 'Blue', 'Orange', 'Green', 'Red', 'Purple', 'Brown', 'Pink', 'Grey', 'Olive', 'Cyan']
     cdict = list(zip(c_palette,cnames))
     
-    if argv[4] == 'NONE' and argv[5] == 'NONE':
+    print(argv[3])
+    print(argv[4])
+    if argv[3] == 'NONE':
         if transfile:
             for i in range(len(lines)):
                 select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
                 callbacks.append(CustomJS(args=dict(source=source, line=lines[i], select=select[i], dic=cdict), code ="""
+                alert('nao mesmo');
                 line.glyph.line_color = select.value;
                 line.trigger('change');
                 """))
-            
                 select[i].js_on_change('value', callbacks[i])
-    
         else:
             for i in range(len(lines)):
                 select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
                 callbacks.append(CustomJS(args=dict(source=source, line=lines[i], band=bands[i], select=select[i], dic=cdict), code ="""
+                alert('mas nao ta');
                 line.glyph.line_color = select.value;
                 band.fill_color = select.value;
                 line.trigger('change');
@@ -336,10 +338,11 @@ def plot(doc):
             
                 select[i].js_on_change('value', callbacks[i])
     
-    if argv[4] != 'NONE':
+    else:
         for i in range(len(lines)):
             select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
             callbacks.append(CustomJS(args=dict(source=source, line=lines[i], band=bands[i], pval=pvals[i], select=select[i], dic=cdict), code ="""
+            alert('era para estar aqui');
             pval.glyph.line_color = select.value;
             line.glyph.line_color = select.value;
             band.fill_color = select.value;
