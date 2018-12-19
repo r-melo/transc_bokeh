@@ -320,7 +320,6 @@ def plot(doc):
             for i in range(len(lines)):
                 select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
                 callbacks.append(CustomJS(args=dict(source=source, line=lines[i], select=select[i], dic=cdict), code ="""
-                alert('nao mesmo');
                 line.glyph.line_color = select.value;
                 line.trigger('change');
                 """))
@@ -329,7 +328,6 @@ def plot(doc):
             for i in range(len(lines)):
                 select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
                 callbacks.append(CustomJS(args=dict(source=source, line=lines[i], band=bands[i], select=select[i], dic=cdict), code ="""
-                alert('mas nao ta');
                 line.glyph.line_color = select.value;
                 band.fill_color = select.value;
                 line.trigger('change');
@@ -342,7 +340,6 @@ def plot(doc):
         for i in range(len(lines)):
             select.append(Select(title=catnames[i] + " color", value=' ', options=cdict))
             callbacks.append(CustomJS(args=dict(source=source, line=lines[i], band=bands[i], pval=pvals[i], select=select[i], dic=cdict), code ="""
-            alert('era para estar aqui');
             pval.glyph.line_color = select.value;
             line.glyph.line_color = select.value;
             band.fill_color = select.value;
